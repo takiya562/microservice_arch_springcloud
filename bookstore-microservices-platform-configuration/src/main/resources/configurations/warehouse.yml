@@ -3,13 +3,17 @@ eureka:
     serviceUrl:
       defaultZone: http://${REGISTRY_HOST:localhost}:${REGISTRY_PORT:8761}/eureka/
 
-database: hsqldb
+database: mysql
 
 spring:
   datasource:
     schema: "classpath:db/${database}/schema.sql"
     data: "classpath:db/${database}/data.sql"
+    url: "jdbc:mysql://mysql_lan:3306/bookstore_cloud?useUnicode=true&characterEncoding=utf-8"
+    username: "root"
+    password: "123456"
     sql-script-encoding: UTF-8
+    initialization-mode: always
   jpa:
     show-sql: false
     hibernate:
